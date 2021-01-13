@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 // lets run it.
-                // we have fetched data from server.
-                // now we have to show data in app using recycler view
-                // lets make recycler view adapter
-                // we have setup and bind popular section
-                // in a same way we add recommended and all menu items
+                // extraction des a partir du serveur database model Json
+                // maintenant,affichage des donné en utilisant la vu recycler
+                // creation d'une vue recycleradapter
+                // configuration et attache du secteur populaire
+                //
                 // we add two adapter class for allmenu and recommended items.
                 // so lets do it fast.
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<FoodData>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Le serveur ne repon pas.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Le serveur ne repond pas.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -83,8 +83,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void  getPopularData(List<Popular> popularList){
 
+        //initialisation de popularRecyclerView
         popularRecyclerView = findViewById(R.id.popular_recycler);
+
+        /*
+        popularAdapter nous permet de le lien entre le recyclerView (popularrecyclerView)
+        et les données de popular qu'on souhaite afficher
+        */
         popularAdapter = new PopularAdapter(this, popularList);
+
+
+        // on va creer layout manager qui sera associer a ce recyclerView donc popularRecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         popularRecyclerView.setLayoutManager(layoutManager);
         popularRecyclerView.setAdapter(popularAdapter);
@@ -122,4 +131,7 @@ public class MainActivity extends AppCompatActivity {
     // complited all recyclerview
     // now we will setup on click listener on items.
     // tutorial complited see you in the next video.
+
+
+
 }

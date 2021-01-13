@@ -69,6 +69,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
         return popularList.size();
     }
 
+
+    //
     public  static class PopularViewHolder extends RecyclerView.ViewHolder{
 
         ImageView popularImage;
